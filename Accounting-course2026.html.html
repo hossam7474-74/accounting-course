@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دورة المحاسبة الذكية | مجاناً | التقييد مفتوح الآن</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- مكتبة jsPDF لتصدير PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #2e86c1;
+            --accent: #e74c3c;
+            --finance-color: #16a085;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --whatsapp: #25D366;
+            --google-calendar: #4285F4;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* رأس الصفحة */
+        header {
+            background: linear-gradient(to right, var(--primary), #154360);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+        
+        .logo i {
+            color: var(--finance-color);
+            font-size: 2rem;
+        }
+        
+        .free-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* المحتوى الرئيسي */
+        .container {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* بطاقة الدورة الرئيسية */
+        .course-hero {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .course-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(to right, var(--finance-color), var(--primary));
+        }
+        
+        .course-title {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+        }
+        
+        .course-subtitle {
+            color: var(--finance-color);
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .instructor-card {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-right: 5px solid var(--finance-color);
+        }
+        
+        .instructor-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--finance-color), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .instructor-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        /* قائمة المميزات */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--finance-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card i {
+            color: var(--finance-color);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* قسم التسجيل */
+        .registration-section {
+            background: linear-gradient(135deg, var(--primary), #1a5276);
+            color: white;
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .registration-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .registration-section > p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .time-slots {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .time-slot {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            min-width: 200px;
+        }
+        
+        .time-slot:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .time-slot.active {
+            background: var(--finance-color);
+            border-color: white;
+            transform: scale(1.05);
+        }
+        
+        .time-slot i {
+            margin-left: 0.5rem;
+        }
+        
+        /* نموذج التسجيل */
+        .registration-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--finance-color);
+            box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.1);
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: var(--finance-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #138d75;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(22, 160, 133, 0.3);
+        }
+        
+        .btn-whatsapp {
+            background: var(--whatsapp);
+            color: white;
+            margin-right: 1rem;
+        }
+        
+        .btn-pdf {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+        
+        .contact-item i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .whatsapp-link {
+            display: inline-block;
+            background: var(--whatsapp);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-link:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* زر التقويم الجديد */
+        .calendar-link {
+            display: inline-block;
+            background: var(--google-calendar);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(66, 133, 244, 0.4);
+            border: 2px solid white;
+        }
+        
+        .calendar-link:hover {
+            background: #3367d6;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.5);
+        }
+        
+        .calendar-link i {
+            margin-left: 10px;
+        }
+        
+        /* الدورات القادمة */
+        .upcoming-courses {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .course-item {
+            padding: 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .course-item:hover {
+            border-color: var(--finance-color);
+            transform: translateY(-5px);
+        }
+        
+        /* الفوتر */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+        
+        .countdown {
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 1rem 0;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: 3px solid var(--finance-color);
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        #timer {
+            font-size: 1.6rem;
+            color: var(--accent);
+            margin: 0.3rem 0;
+        }
+        
+        .success-message {
+            display: none;
+            background: var(--success);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* تصميم صفحة PDF */
+        @media print {
+            .no-print, .btn {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .course-hero, .registration-form {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+        }
+        
+        /* جلسة Google Meet الجديدة */
+        .google-meet-section {
+            background: linear-gradient(135deg, #4285F4, #0F9D58);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(66, 133, 244, 0.3);
+        }
+        
+        .smart-whatsapp {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .whatsapp-message {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border-right: 4px solid var(--whatsapp);
+            text-align: right;
+            max-width: 400px;
+            margin: 1rem auto;
+            direction: rtl;
+        }
+        
+        /* قسم التركيز الجديد */
+        .focus-section {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2.5rem 0;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(243, 156, 18, 0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .focus-section h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .focus-section p {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+        
+        .focus-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-calculator"></i>
+                <span>أكاديمية المحاسب الذكي</span>
+            </div>
+            <div class="free-badge">مجاناً بالكامل</div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container">
+        <!-- بطاقة الدورة الرئيسية -->
+        <div class="course-hero" id="course-content">
+            <h1 class="course-title">🎓 دورة المحاسبة الذكية وتحليل البيانات المتقدم</h1>
+            <p style="color: var(--primary); font-size: 1.2rem; text-align: center; margin-bottom: 2rem;">
+                للمحاسبين ومحللي البيانات وموظفي الموارد البشرية
+            </p>
+            
+            <div class="instructor-card">
+                <div class="instructor-img">ح.س</div>
+                <div class="instructor-info">
+                    <h3>المحلل المالي / حسام السيد</h3>
+                    <p>محاسب قانوني ومحلل مالي معتمد، متخصص في المحاسبة الذكية وتحويل البيانات إلى قرارات استراتيجية</p>
+                </div>
+            </div>
+            
+            <div class="countdown">
+                <p>آخر موعد للتسجيل:</p>
+                <div id="timer">04:58:36</div>
+                <p>الأماكن محدودة - سجل الآن مجاناً</p>
+            </div>
+            
+            <!-- رسالة النجاح -->
+            <div id="successMessage" class="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h3>تم تسجيلك بنجاح!</h3>
+                <p>سيتم إرسال تفاصيل الدورة على بريدك الإلكتروني ورقم الواتساب</p>
+                <p>تحقق من صندوق الوارد والرسائل غير المرغوب فيها</p>
+            </div>
+            
+            <h3 style="color: var(--primary); margin: 2rem 0 1rem;">📋 محتوى الدورة التفصيلي:</h3>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h4>المحاسبة الذكية والذكاء الاصطناعي</h4>
+                    <p>كيفية استخدام أدوات AI في التحليل المالي واتخاذ القرارات الذكية</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>تحليل القوائم الختامية والتقارير السنوية</h4>
+                    <p>قراءة وتحليل القوائم المالية باستخدام Skywork وSourcetable</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h4>أتمتة التقارير المالية</h4>
+                    <p>كيفية العمل على إعداد التقارير تلقائياً مع Ali وSkywork وSourcetable</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h4>التقارير الشهرية الديناميكية</h4>
+                    <p>إعداد تقارير الرواتب والموازنات بطريقة تلقائية</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-database"></i>
+                    <h4>تحويل البيانات إلى قرارات</h4>
+                    <p>من البيانات الخام إلى التقارير الاستراتيجية القابلة للتنفيذ</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-tools"></i>
+                    <h4>الأدوات العملية</h4>
+                    <p>Power BI - Excel المتقدم - أدوات الذكاء الاصطناعي - RPA</p>
+                </div>
+            </div>
+            
+            <div style="margin: 2.5rem 0; padding: 1.5rem; background: #f0f9ff; border-radius: 10px; border-right: 4px solid var(--secondary);">
+                <h4 style="color: var(--primary); margin-bottom: 1rem;">🎯 مخرجات الدورة:</h4>
+                <ul style="padding-right: 1.5rem;">
+                    <li>القدرة على إعداد التقارير المالية الذكية</li>
+                    <li>أتمتة العمليات المحاسبية المتكررة</li>
+                    <li>تحليل القوائم المالية باحترافية</li>
+                    <li>تصميم Dashboards تفاعلية للبيانات</li>
+                    <li>مهارات استخدام أدوات الذكاء الاصطناعي في المحاسبة</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- جلسة Google Meet مع الرابط الجديد -->
+        <div class="google-meet-section">
+            <h2><i class="fas fa-calendar-alt"></i> الجلسة التعريفية المجانية</h2>
+            <p><strong>السبت, 14 مارس 2026 ⋅ 4:00 – 5:00 م</strong></p>
+            <p>احجز مكانك الآن في الجلسة التعريفية المجانية</p>
+            
+            <!-- الرابط الجديد -->
+            <a href="https://calendar.app.google/Rz2TjoEcViozWNrm8" 
+               class="calendar-link" target="_blank">
+                <i class="fas fa-calendar-plus"></i> احجز عبر تقويم Google
+            </a>
+            
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+                عدد المقاعد محدودة - احجز الآن لتأكيد حضورك
+            </p>
+        </div>
+
+        <!-- قسم التسجيل -->
+        <div class="registration-section">
+            <h2>⏰ اختر التوقيت المناسب لك</h2>
+            <p>الدورة متاحة في فترتين لتتناسب مع جميع المواعيد</p>
+            
+            <div class="time-slots">
+                <div class="time-slot" data-time="morning">
+                    <i class="fas fa-sun"></i>
+                    <h4>الفترة الصباحية</h4>
+                    <p>8:00 مساءً - 9:00 مساءً</p>
+                    <small>مناسب للعائدين من العمل مبكراً</small>
+                </div>
+                
+                <div class="time-slot" data-time="evening">
+                    <i class="fas fa-moon"></i>
+                    <h4>الفترة المسائية</h4>
+                    <p>9:00 مساءً - 10:00 مساءً</p>
+                    <small>مناسب للعائدين من العمل متأخراً</small>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>هاتف: 01044577426</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>واتساب: 00971585819074</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>البريد الإلكتروني: hossam.royal25@yahoo.com</span>
+                </div>
+            </div>
+            
+            <!-- زر واتساب معدل -->
+            <a href="https://wa.me/00971585819074?text=مرحباً%20أ.%20حسام،%20أريد%20التسجيل%20في%20دورة%20المحاسبة%20الذكية.%20الاسم:%20" 
+               class="whatsapp-link" target="_blank" id="whatsappAutoMessage">
+                <i class="fab fa-whatsapp"></i> تفعيل التسجيل عبر واتساب
+            </a>
+        </div>
+
+        <!-- نظام التسجيل الذكي عبر واتساب -->
+        <div class="smart-whatsapp">
+            <h3 style="color: var(--primary); margin-bottom: 0.5rem;">
+                <i class="fab fa-whatsapp" style="color: var(--whatsapp);"></i> نظام التسجيل الذكي عبر واتساب
+            </h3>
+            <p style="color: #666; margin-bottom: 1rem; font-size: 0.95rem;">
+                يتم إرسال رسالة فورية باسمك وفترتك بمجرد ضغطك على زر "تفعيل التسجيل"
+            </p>
+            
+            <div class="whatsapp-message">
+                <p style="color: var(--dark); font-weight: bold; margin-bottom: 0.3rem;">📱 الرسالة التلقائية:</p>
+                <p style="color: #666; font-size: 0.9rem;">"مرحباً أ. حسام، أريد التسجيل في دورة المحاسبة الذكية. الاسم: [الاسم] الفترة: [الصباحية/المسائية] رقم الهاتف: [الهاتف]"</p>
+            </div>
+        </div>
+
+        <!-- نموذج التسجيل -->
+        <div class="registration-form">
+            <h2 style="color: var(--primary); text-align: center; margin-bottom: 2rem;">📝 سجل الآن مجاناً</h2>
+            
+            <form id="registrationForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName"><i class="fas fa-user"></i> الاسم الكامل *</label>
+                        <input type="text" id="fullName" required placeholder="أدخل اسمك الثلاثي">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone"></i> رقم الهاتف *</label>
+                        <input type="tel" id="phone" required placeholder="مثال: 01012345678">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> البريد الإلكتروني *</label>
+                        <input type="email" id="email" required placeholder="example@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="job"><i class="fas fa-briefcase"></i> التخصص / الوظيفة *</label>
+                        <select id="job" required>
+                            <option value="">اختر تخصصك</option>
+                            <option value="accountant">محاسب</option>
+                            <option value="financial_analyst">محلل مالي</option>
+                            <option value="hr">موارد بشرية</option>
+                            <option value="student">طالب</option>
+                            <option value="manager">مدير</option>
+                            <option value="other">آخر</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="timeSlot"><i class="fas fa-clock"></i> الفترة المفضلة *</label>
+                    <select id="timeSlot" required>
+                        <option value="">اختر الفترة المناسبة</option>
+                        <option value="morning">الفترة الصباحية (8:00 مساءً - 9:00 مساءً)</option>
+                        <option value="evening">الفترة المسائية (9:00 مساءً - 10:00 مساءً)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience"><i class="fas fa-chart-bar"></i> خبرتك في المحاسبة (سنوات)</label>
+                    <input type="number" id="experience" min="0" max="50" placeholder="عدد سنوات الخبرة">
+                </div>
+                
+                <div style="text-align: center; margin: 2.5rem 0;">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> أرسل طلب التسجيل
+                    </button>
+                    
+                    <button type="button" class="btn btn-pdf" id="exportPdf">
+                        <i class="fas fa-file-pdf"></i> حفظ التفاصيل كـ PDF
+                    </button>
+                </div>
+                
+                <p style="text-align: center; color: #666; font-size: 0.9rem;">
+                    <i class="fas fa-info-circle"></i> ستصلك تفاصيل الدورة على بريدك الإلكتروني ورقم الواتساب خلال 24 ساعة
+                </p>
+            </form>
+        </div>
+
+        <!-- قسم التركيز على تطوير الأداء المحاسبي باستخدام الذكاء الاصطناعي -->
+        <div class="focus-section">
+            <div class="focus-icon">🎯</div>
+            <h3>التركيز: تطوير الأداء المحاسبي باستخدام الذكاء الاصطناعي</h3>
+            <p>دورة متكاملة لتحويل مهاراتك المحاسبية باستخدام أحدث تقنيات الذكاء الاصطناعي</p>
+            <p>تعلم كيفية أتمتة التقارير وتحليل البيانات واتخاذ قرارات استراتيجية</p>
+        </div>
+
+        <!-- الدورات القادمة -->
+        <div class="upcoming-courses">
+            <h2 style="color: var(--primary); margin-bottom: 1.5rem;">🚀 محتوى الدورة المتقدم</h2>
+            
+            <div class="course-list">
+                <div class="course-item">
+                    <h4>📊 نظام القيود الآلي والمعيار الضريبي الاحترافي</h4>
+                    <p>تغيير جذري في طريقة تسجيل القيود لضمان الامتثال الضريبي بنسبة 100%.</p>
+                    <ul style="padding-right: 1.5rem; margin-top: 0.5rem; font-size: 0.9rem;">
+                        <li>إنشاء القيود تلقائياً (مثال: شراء سيارة)</li>
+                        <li>التحقق الآلي (توازن، اكتمال، دقة)</li>
+                        <li>النظام كمعيار وطني إلزامي للهيئات</li>
+                        <li>تقليل وقت الفحص الضريبي بنسبة 80%</li>
+                    </ul>
+                </div>
+                
+                <div class="course-item">
+                    <h4>🤖 أتمتة الموارد البشرية وتقارير الرواتب الذكية</h4>
+                    <p>نظام آلي بالكامل لا يحتاج لتدخل يدوي في الحسابات المعقدة.</p>
+                    <ul style="padding-right: 1.5rem; margin-top: 0.5rem; font-size: 0.9rem;">
+                        <li>إدخال البيانات (غياب، إضافي، سلف) آلياً</li>
+                        <li>تقارير ذكية بنقرة زر واحدة لكل موظف</li>
+                        <li>تطوير الأداء المحاسبي باستخدام أحدث تقنيات الذكاء الاصطناعي</li>
+                    </ul>
+                </div>
+                
+                <div class="course-item">
+                    <h4>📈 تطوير الأداء المحاسبي باستخدام الذكاء الاصطناعي</h4>
+                    <p>التحول الرقمي الكامل للمحاسبة والموارد البشرية.</p>
+                    <ul style="padding-right: 1.5rem; margin-top: 0.5rem; font-size: 0.9rem;">
+                        <li>مهارات استخدام أدوات الذكاء الاصطناعي في المحاسبة</li>
+                        <li>تصميم Dashboards تفاعلية للبيانات</li>
+                        <li>أتمتة العمليات المحاسبية المتكررة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>أكاديمية المحاسب الذكي</h3>
+                <p>نقدم دورات متخصصة في المحاسبة الذكية وتحليل البيانات للمحاسبين وموظفي الموارد البشرية</p>
+                <p>جميع الدورات مجانية - نسعى لرفع كفاءة المحاسبين العرب</p>
+            </div>
+            
+            <div>
+                <h3>التواصل السريع</h3>
+                <p><i class="fas fa-phone"></i> 01044577426</p>
+                <p><i class="fab fa-whatsapp"></i> 00971585819074</p>
+                <p><i class="fas fa-envelope"></i> hossam.royal25@yahoo.com</p>
+            </div>
+            
+            <div>
+                <h3>🎯 تركيز الدورة</h3>
+                <p>تطوير الأداء المحاسبي باستخدام الذكاء الاصطناعي</p>
+                <p>دورة مجانية بالكامل</p>
+                <p>شهادة معتمدة عند الاكتمال</p>
+                <p>تسجيل مفتوح حتى 14 مارس 2026</p>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2026 أكاديمية المحاسب الذكي - جميع الحقوق محفوظة</p>
+            <p>تم تصميم هذه الصفحة خصيصاً للتسجيل في دورة المحاسبة الذكية</p>
+        </div>
+    </footer>
+
+    <script>
+        // تهيئة jsPDF
+        const { jsPDF } = window.jspdf;
+        
+        // العد التنازلي
+        function startCountdown() {
+            let timer = document.getElementById('timer');
+            let time = 4 * 60 * 60 + 58 * 60 + 36; // 4:58:36
+            
+            function updateTimer() {
+                let hours = Math.floor(time / 3600);
+                let minutes = Math.floor((time % 3600) / 60);
+                let seconds = time % 60;
+                
+                timer.textContent = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (time > 0) {
+                    time--;
+                    setTimeout(updateTimer, 1000);
+                } else {
+                    timer.textContent = "انتهى التسجيل!";
+                    timer.style.color = "var(--accent)";
+                }
+            }
+            
+            updateTimer();
+        }
+        
+        // اختيار الفترة الزمنية
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('.time-slot').forEach(s => {
+                    s.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const timeValue = this.dataset.time;
+                document.getElementById('timeSlot').value = timeValue === 'morning' ? 
+                    'الفترة الصباحية (8:00 مساءً - 9:00 مساءً)' : 
+                    'الفترة المسائية (9:00 مساءً - 10:00 مساءً)';
+            });
+        });
+        
+        // معالجة نموذج التسجيل
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // جمع البيانات
+            const formData = {
+                name: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                job: document.getElementById('job').value,
+                timeSlot: document.getElementById('timeSlot').value,
+                experience: document.getElementById('experience').value,
+                timestamp: new Date().toLocaleString('ar-EG')
+            };
+            
+            // إرسال رسالة واتساب تلقائية
+            sendWhatsAppMessage(formData);
+            
+            // إظهار رسالة النجاح
+            showSuccessMessage();
+            
+            // إعادة تعيين النموذج
+            this.reset();
+        });
+        
+        function sendWhatsAppMessage(data) {
+            // رسالة واتساب تلقائية معدلة
+            const message = `مرحباً أ. حسام، أريد التسجيل في دورة المحاسبة الذكية.
+            
+الاسم: ${data.name}
+الفترة المختارة: ${data.timeSlot}
+رقم الهاتف: ${data.phone}
+البريد الإلكتروني: ${data.email}
+التخصص: ${data.job}
+الخبرة: ${data.experience} سنوات`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/00971585819074?text=${encodedMessage}`;
+            
+            // فتح نافذة جديدة للواتساب
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        function showSuccessMessage() {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.style.display = 'block';
+            
+            // إخفاء الرسالة بعد 10 ثواني
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 10000);
+            
+            // التمرير إلى الرسالة
+            successDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // تصدير PDF
+        document.getElementById('exportPdf').addEventListener('click', function() {
+            const element = document.getElementById('course-content');
+            
+            html2canvas(element, {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                
+                const imgWidth = 210;
+                const pageHeight = 295;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+                
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                
+                // إضافة معلومات التسجيل
+                const name = document.getElementById('fullName').value || 'مستخدم';
+                pdf.save(`دورة_المحاسبة_الذكية_${name}.pdf`);
+                
+                alert('تم حفظ ملف PDF بنجاح!');
+            });
+        });
+        
+        // تحديث رابط الواتساب المباشر مع اسم المستخدم
+        document.getElementById('whatsappAutoMessage').addEventListener('click', function(e) {
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const timeSlot = document.getElementById('timeSlot').value;
+            
+            if (name && phone) {
+                const message = `مرحباً أ. حسام، أريد التسجيل في دورة المحاسبة الذكية.
+                
+الاسم: ${name}
+الفترة المختارة: ${timeSlot || 'لم يتم الاختيار بعد'}
+رقم الهاتف: ${phone}
+أرجو التواصل معي للتسجيل.`;
+                
+                const encodedMessage = encodeURIComponent(message);
+                this.href = `https://wa.me/00971585819074?text=${encodedMessage}`;
+            } else {
+                e.preventDefault();
+                alert('يرجى إدخال الاسم ورقم الهاتف أولاً');
+            }
+        });
+        
+        // بدء العد التنازلي عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', startCountdown);
+    </script>
+</body>
+</html>
