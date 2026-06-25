@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دورة المحاسبة الذكية | مجاناً | التقييد مفتوح الآن</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- مكتبة jsPDF لتصدير PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -18,7 +17,6 @@
             --dark: #2c3e50;
             --success: #27ae60;
             --whatsapp: #25D366;
-            --google-calendar: #4285F4;
         }
         
         * {
@@ -34,7 +32,6 @@
             line-height: 1.6;
         }
         
-        /* رأس الصفحة */
         header {
             background: linear-gradient(to right, var(--primary), #154360);
             color: white;
@@ -82,14 +79,12 @@
             100% { transform: scale(1); }
         }
         
-        /* المحتوى الرئيسي */
         .container {
             max-width: 1200px;
             margin: 2.5rem auto;
             padding: 0 1.5rem;
         }
         
-        /* بطاقة الدورة الرئيسية */
         .course-hero {
             background: white;
             border-radius: 15px;
@@ -152,7 +147,6 @@
             color: var(--primary);
         }
         
-        /* قائمة المميزات */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -180,7 +174,6 @@
             margin-bottom: 1rem;
         }
         
-        /* قسم التسجيل */
         .registration-section {
             background: linear-gradient(135deg, var(--primary), #1a5276);
             color: white;
@@ -232,7 +225,6 @@
             margin-left: 0.5rem;
         }
         
-        /* نموذج التسجيل */
         .registration-form {
             background: white;
             padding: 2.5rem;
@@ -320,6 +312,17 @@
             color: white;
         }
         
+        .btn-calendar {
+            background: #4285f4;
+            color: white;
+        }
+        
+        .btn-calendar:hover {
+            background: #3367d6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+        }
+        
         .contact-info {
             display: flex;
             justify-content: center;
@@ -358,33 +361,6 @@
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
         
-        /* زر التقويم الجديد */
-        .calendar-link {
-            display: inline-block;
-            background: var(--google-calendar);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin: 1.5rem 0;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(66, 133, 244, 0.4);
-            border: 2px solid white;
-        }
-        
-        .calendar-link:hover {
-            background: #3367d6;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.5);
-        }
-        
-        .calendar-link i {
-            margin-left: 10px;
-        }
-        
-        /* الدورات القادمة */
         .upcoming-courses {
             background: white;
             padding: 3rem;
@@ -412,7 +388,6 @@
             transform: translateY(-5px);
         }
         
-        /* الفوتر */
         footer {
             background: var(--dark);
             color: white;
@@ -473,7 +448,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* تصميم صفحة PDF */
         @media print {
             .no-print, .btn {
                 display: none !important;
@@ -490,15 +464,13 @@
             }
         }
         
-        /* جلسة Google Meet الجديدة */
         .google-meet-section {
-            background: linear-gradient(135deg, #4285F4, #0F9D58);
+            background: linear-gradient(135deg, #4285F4, #34A853);
             color: white;
-            padding: 2.5rem 2rem;
+            padding: 1.5rem 2rem;
             border-radius: 15px;
             margin: 2rem 0;
             text-align: center;
-            box-shadow: 0 15px 30px rgba(66, 133, 244, 0.3);
         }
         
         .smart-whatsapp {
@@ -521,38 +493,44 @@
             direction: rtl;
         }
         
-        /* قسم التركيز الجديد */
-        .focus-section {
-            background: linear-gradient(135deg, #f39c12, #e67e22);
-            color: white;
-            padding: 2.5rem;
+        /* قسم الخلاصة الجديد */
+        .summary-section {
+            background: #f8f9fa;
+            padding: 2rem;
             border-radius: 15px;
             margin: 2.5rem 0;
-            text-align: center;
-            box-shadow: 0 15px 30px rgba(243, 156, 18, 0.3);
-            border: 1px solid rgba(255,255,255,0.2);
+            border-right: 5px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        .focus-section h3 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            font-weight: bold;
+        .summary-section h2 {
+            color: var(--primary);
+            border-bottom: 3px solid #f1c40f;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
         }
         
-        .focus-section p {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            opacity: 0.95;
+        .summary-item {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            font-size: 1.05rem;
         }
         
-        .focus-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+        .summary-item .red {
+            color: #e74c3c;
+        }
+        .summary-item .blue {
+            color: #2980b9;
+        }
+        .summary-item .gold {
+            color: #f39c12;
         }
     </style>
 </head>
 <body>
-    <!-- رأس الصفحة -->
     <header>
         <div class="header-container">
             <div class="logo">
@@ -563,9 +541,7 @@
         </div>
     </header>
 
-    <!-- المحتوى الرئيسي -->
     <main class="container">
-        <!-- بطاقة الدورة الرئيسية -->
         <div class="course-hero" id="course-content">
             <h1 class="course-title">🎓 دورة المحاسبة الذكية وتحليل البيانات المتقدم</h1>
             <p style="color: var(--primary); font-size: 1.2rem; text-align: center; margin-bottom: 2rem;">
@@ -586,12 +562,31 @@
                 <p>الأماكن محدودة - سجل الآن مجاناً</p>
             </div>
             
-            <!-- رسالة النجاح -->
             <div id="successMessage" class="success-message">
                 <i class="fas fa-check-circle"></i>
                 <h3>تم تسجيلك بنجاح!</h3>
                 <p>سيتم إرسال تفاصيل الدورة على بريدك الإلكتروني ورقم الواتساب</p>
                 <p>تحقق من صندوق الوارد والرسائل غير المرغوب فيها</p>
+            </div>
+
+            <!-- ===== قسم الخلاصة الجديد (تمت الإضافة) ===== -->
+            <div class="summary-section">
+                <h2>📌 الخلاصة: المحاسب كمطور أداء مالي</h2>
+                
+                <div class="summary-item">
+                    <strong class="red">🤖 مُضاعف للكفاءة:</strong>
+                    <span>الذكاء الاصطناعي ليس بديلاً عن المحاسب، بل هو أداة تضاعف إنتاجية وقيمته التحليلية.</span>
+                </div>
+                
+                <div class="summary-item">
+                    <strong class="blue">⏳ تحرير الوقت:</strong>
+                    <span>المحاسب الناجح اليوم ليس من يعرف القيود فقط، بل من يعرف كيف يوظف الأدوات الذكية لتحرير وقته للعمل ذي القيمة الأعلى.</span>
+                </div>
+                
+                <div class="summary-item" style="border-bottom: 3px solid #f1c40f;">
+                    <strong class="gold">⭐ القاعدة الذهبية:</strong>
+                    <span>اعمل مع الذكاء الاصطناعي مرة واحدة للتأسيس، دعه يعمل لك دائماً للتنفيذ.</span>
+                </div>
             </div>
             
             <h3 style="color: var(--primary); margin: 2rem 0 1rem;">📋 محتوى الدورة التفصيلي:</h3>
@@ -646,24 +641,18 @@
             </div>
         </div>
 
-        <!-- جلسة Google Meet مع الرابط الجديد -->
+        <!-- ===== جلسة Google Meet (تم تغيير التاريخ إلى 1 يوليو) ===== -->
         <div class="google-meet-section">
-            <h2><i class="fas fa-calendar-alt"></i> الجلسة التعريفية المجانية</h2>
-            <p><strong>السبت, 14 مارس 2026 ⋅ 4:00 – 5:00 م</strong></p>
-            <p>احجز مكانك الآن في الجلسة التعريفية المجانية</p>
-            
-            <!-- الرابط الجديد -->
-            <a href="https://calendar.app.google/Rz2TjoEcViozWNrm8" 
-               class="calendar-link" target="_blank">
-                <i class="fas fa-calendar-plus"></i> احجز عبر تقويم Google
+            <h2><i class="fas fa-video"></i> الجلسة التعريفية المجانية</h2>
+            <p><strong>الأربعاء, 1 يوليو ⋅ 4:00 – 5:00 م</strong></p>
+            <p>meet.google.com/okh-axai-fgx</p>
+            <p>التجمع الخامس القاهره الجديده</p>
+            <a href="https://meet.google.com/okh-axai-fgx" class="whatsapp-link" target="_blank" style="background: white; color: #4285F4; margin-top: 1rem;">
+                <i class="fas fa-external-link-alt"></i> انضم للجلسة الآن
             </a>
-            
-            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
-                عدد المقاعد محدودة - احجز الآن لتأكيد حضورك
-            </p>
         </div>
 
-        <!-- قسم التسجيل -->
+        <!-- ===== قسم التسجيل (تم إضافة زر التقويم) ===== -->
         <div class="registration-section">
             <h2>⏰ اختر التوقيت المناسب لك</h2>
             <p>الدورة متاحة في فترتين لتتناسب مع جميع المواعيد</p>
@@ -699,11 +688,19 @@
                 </div>
             </div>
             
-            <!-- زر واتساب معدل -->
-            <a href="https://wa.me/00971585819074?text=مرحباً%20أ.%20حسام،%20أريد%20التسجيل%20في%20دورة%20المحاسبة%20الذكية.%20الاسم:%20" 
-               class="whatsapp-link" target="_blank" id="whatsappAutoMessage">
-                <i class="fab fa-whatsapp"></i> تفعيل التسجيل عبر واتساب
-            </a>
+            <!-- أزرار التسجيل: واتساب + التقويم الجديد -->
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;">
+                <a href="https://wa.me/00971585819074?text=مرحباً%20أ.%20حسام،%20أريد%20التسجيل%20في%20دورة%20المحاسبة%20الذكية.%20الاسم:%20" 
+                   class="whatsapp-link" target="_blank" id="whatsappAutoMessage">
+                    <i class="fab fa-whatsapp"></i> تفعيل التسجيل عبر واتساب
+                </a>
+                
+                <!-- زر التقويم الجديد -->
+                <a href="https://calendar.app.google/c2Vpe1GvFpW4FCd86" target="_blank" 
+                   class="whatsapp-link" style="background: #4285f4;">
+                    <i class="fas fa-calendar-alt"></i> سجل الآن عبر Google Calendar
+                </a>
+            </div>
         </div>
 
         <!-- نظام التسجيل الذكي عبر واتساب -->
@@ -788,14 +785,6 @@
             </form>
         </div>
 
-        <!-- قسم التركيز على تطوير الأداء المحاسبي باستخدام الذكاء الاصطناعي -->
-        <div class="focus-section">
-            <div class="focus-icon">🎯</div>
-            <h3>التركيز: تطوير الأداء المحاسبي باستخدام الذكاء الاصطناعي</h3>
-            <p>دورة متكاملة لتحويل مهاراتك المحاسبية باستخدام أحدث تقنيات الذكاء الاصطناعي</p>
-            <p>تعلم كيفية أتمتة التقارير وتحليل البيانات واتخاذ قرارات استراتيجية</p>
-        </div>
-
         <!-- الدورات القادمة -->
         <div class="upcoming-courses">
             <h2 style="color: var(--primary); margin-bottom: 1.5rem;">🚀 محتوى الدورة المتقدم</h2>
@@ -818,7 +807,7 @@
                     <ul style="padding-right: 1.5rem; margin-top: 0.5rem; font-size: 0.9rem;">
                         <li>إدخال البيانات (غياب، إضافي، سلف) آلياً</li>
                         <li>تقارير ذكية بنقرة زر واحدة لكل موظف</li>
-                        <li>تطوير الأداء المحاسبي باستخدام أحدث تقنيات الذكاء الاصطناعي</li>
+                        <li>تطوير الأداء المحاسبي باستخدام أحدث تقنيات الذكاء الاصطناعي وجوجل</li>
                     </ul>
                 </div>
                 
@@ -835,7 +824,6 @@
         </div>
     </main>
 
-    <!-- الفوتر -->
     <footer>
         <div class="footer-container">
             <div>
@@ -852,28 +840,26 @@
             </div>
             
             <div>
-                <h3>🎯 تركيز الدورة</h3>
-                <p>تطوير الأداء المحاسبي باستخدام الذكاء الاصطناعي</p>
-                <p>دورة مجانية بالكامل</p>
-                <p>شهادة معتمدة عند الاكتمال</p>
-                <p>تسجيل مفتوح حتى 14 مارس 2026</p>
+                <h3>معلومات مهمة</h3>
+                <p>🎥 عدد المحاضرات: 5 محاضرة</p>
+                <p>👥 المشتركون: اغتنم الفرصة</p>
+                <p>💰 السعر: مجاني بالكامل</p>
+                <p>🎯 التركيز: تطوير الأداء المحاسبي باستخدام الذكاء الاصطناعي</p>
             </div>
         </div>
         
         <div class="copyright">
-            <p>© 2026 أكاديمية المحاسب الذكي - جميع الحقوق محفوظة</p>
+            <p>© 2024 أكاديمية المحاسب الذكي - جميع الحقوق محفوظة</p>
             <p>تم تصميم هذه الصفحة خصيصاً للتسجيل في دورة المحاسبة الذكية</p>
         </div>
     </footer>
 
     <script>
-        // تهيئة jsPDF
         const { jsPDF } = window.jspdf;
         
-        // العد التنازلي
         function startCountdown() {
             let timer = document.getElementById('timer');
-            let time = 4 * 60 * 60 + 58 * 60 + 36; // 4:58:36
+            let time = 4 * 60 * 60 + 58 * 60 + 36;
             
             function updateTimer() {
                 let hours = Math.floor(time / 3600);
@@ -895,7 +881,6 @@
             updateTimer();
         }
         
-        // اختيار الفترة الزمنية
         document.querySelectorAll('.time-slot').forEach(slot => {
             slot.addEventListener('click', function() {
                 document.querySelectorAll('.time-slot').forEach(s => {
@@ -910,11 +895,9 @@
             });
         });
         
-        // معالجة نموذج التسجيل
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // جمع البيانات
             const formData = {
                 name: document.getElementById('fullName').value,
                 phone: document.getElementById('phone').value,
@@ -925,18 +908,12 @@
                 timestamp: new Date().toLocaleString('ar-EG')
             };
             
-            // إرسال رسالة واتساب تلقائية
             sendWhatsAppMessage(formData);
-            
-            // إظهار رسالة النجاح
             showSuccessMessage();
-            
-            // إعادة تعيين النموذج
             this.reset();
         });
         
         function sendWhatsAppMessage(data) {
-            // رسالة واتساب تلقائية معدلة
             const message = `مرحباً أ. حسام، أريد التسجيل في دورة المحاسبة الذكية.
             
 الاسم: ${data.name}
@@ -948,8 +925,6 @@
             
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/00971585819074?text=${encodedMessage}`;
-            
-            // فتح نافذة جديدة للواتساب
             window.open(whatsappUrl, '_blank');
         }
         
@@ -957,16 +932,13 @@
             const successDiv = document.getElementById('successMessage');
             successDiv.style.display = 'block';
             
-            // إخفاء الرسالة بعد 10 ثواني
             setTimeout(() => {
                 successDiv.style.display = 'none';
             }, 10000);
             
-            // التمرير إلى الرسالة
             successDiv.scrollIntoView({ behavior: 'smooth' });
         }
         
-        // تصدير PDF
         document.getElementById('exportPdf').addEventListener('click', function() {
             const element = document.getElementById('course-content');
             
@@ -995,7 +967,6 @@
                     heightLeft -= pageHeight;
                 }
                 
-                // إضافة معلومات التسجيل
                 const name = document.getElementById('fullName').value || 'مستخدم';
                 pdf.save(`دورة_المحاسبة_الذكية_${name}.pdf`);
                 
@@ -1003,7 +974,6 @@
             });
         });
         
-        // تحديث رابط الواتساب المباشر مع اسم المستخدم
         document.getElementById('whatsappAutoMessage').addEventListener('click', function(e) {
             const name = document.getElementById('fullName').value;
             const phone = document.getElementById('phone').value;
@@ -1025,7 +995,6 @@
             }
         });
         
-        // بدء العد التنازلي عند تحميل الصفحة
         document.addEventListener('DOMContentLoaded', startCountdown);
     </script>
 </body>
